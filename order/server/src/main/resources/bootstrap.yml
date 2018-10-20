@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: order
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: CONFIG
+      profile: dev
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+#先要注册到eureka上，再通过config找到配置服务，然后通过order和test找到配置

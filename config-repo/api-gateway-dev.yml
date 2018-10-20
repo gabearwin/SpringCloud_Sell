@@ -1,0 +1,23 @@
+zuul:
+  routes:
+    # 自定义某些路由 /myProduct/product/list -> /product/product/list
+    aaaaaa:
+      path: /myProduct/**
+      serviceId: product
+      # 默认路由转发之后没有cookie、Authorization等，将sensitiveHeaders设置为空后请求转发就会带上原有的信息
+      sensitiveHeaders:
+      # 简洁写法
+  # product: /myProduct/**
+
+  # 排除某些路由
+  ignored-patterns:
+    - /**/product/listForOrder
+
+#通过[application/routers]可查看所有路由
+management:
+  security:
+    enabled: false
+
+ribbon:
+  ReadTimeout: 5000
+  SocketTimeout: 5000

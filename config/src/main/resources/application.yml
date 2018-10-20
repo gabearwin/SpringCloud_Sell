@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: config
+  cloud:
+    config:
+      server:
+        git:
+          # Github上配置webhooks，地址http://10.5.155.0:8080/monitor
+          uri: https://github.com/gabearwin/config-repo
+          #存放到本地地址
+          basedir: /GitProject/SpringCloud_Sell/config-repo
+  rabbitmq:
+    host: 10.57.211.134
+    port: 5672
+    username: guest
+    password: guest
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+#暴露出接口，类似: [/actuator/refresh],methods=[POST]
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
